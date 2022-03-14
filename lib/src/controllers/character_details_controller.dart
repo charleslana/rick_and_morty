@@ -11,7 +11,7 @@ class CharacterDetailsController extends GetxController
 
   CharacterDetailsProvider characterDetailsProvider =
       CharacterDetailsProvider();
-  int characterId;
+  int? characterId;
 
   @override
   void onInit() {
@@ -20,7 +20,7 @@ class CharacterDetailsController extends GetxController
   }
 
   void fetchCharacter() {
-    characterDetailsProvider.getCharacter(characterId).then((result) {
+    characterDetailsProvider.getCharacter(characterId ?? 1).then((result) {
       change(result, status: RxStatus.success());
     }, onError: (dynamic err) {
       change(null, status: RxStatus.error(err.toString()));
