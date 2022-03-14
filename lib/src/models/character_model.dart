@@ -30,6 +30,9 @@ class CharacterModel {
         results: List<Result>.from(json['results'].map(Result.fromJson)),
       );
 
+  static CharacterModel decoderFromJson(dynamic json) =>
+      CharacterModel.fromJson(json);
+
   Info info;
   List<Result> results;
 

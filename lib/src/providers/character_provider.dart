@@ -5,7 +5,9 @@ import 'package:rick_and_morty/src/models/character_model.dart';
 class CharacterProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = baseUrl;
+    httpClient
+      ..baseUrl = baseUrl
+      ..defaultDecoder = CharacterModel.decoderFromJson;
     super.onInit();
   }
 
@@ -14,6 +16,7 @@ class CharacterProvider extends GetConnect {
     if (response.status.hasError) {
       return Future.error(response.status);
     }
-    return characterModelFromJson(response.bodyString as String);
+    // return characterModelFromJson(response.bodyString as String);
+    return response.body;
   }
 }
